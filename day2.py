@@ -1,16 +1,7 @@
-n = int(input()) 
-
-for row in range(n):
-    if row == 0:
-        each_row = "|"
-    else:
-        spaces = " " * row 
-        each_row = "|" + spaces + "\\" 
-    print(each_row)
-for row in range(n):
-    if row == n - 1:
-        each_row = "|" 
-    else:
-        spaces = " " * (n - row - 1) 
-        each_row = "|" + spaces + "/" 
-    print(each_row) 
+string = input()
+for each_character in string:
+    if each_character != " ":
+        unicode_value = ord(each_character) - 1
+        character = chr(unicode_value)
+        
+        print(character) 
