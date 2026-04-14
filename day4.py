@@ -1,4 +1,6 @@
-color_list = ["Red", "Orange", "Yellow", "Pink", "Green", "Blue", "Purple", "Black", "White"]
+programming_languages_list = ["Python", "Java", "Ruby", "C", "C++", "Go", "R", "JavaScript", "Swift", "PHP", "Kotlin", "Perl"]
 
-index = int(input())
-print(color_list[index])
+m = int(input())
+for i in range(m):
+    index = int(input())  # Read the list indexes
+    print(programming_languages_list[index])  # Print the elements at given index
