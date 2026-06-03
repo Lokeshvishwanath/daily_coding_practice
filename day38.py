@@ -1,52 +1,36 @@
-# Day 38 - Bulk File Renamer
+# Day 38 - QR Code Scanner
 
-import os
+from PIL import Image
+from pyzbar.pyzbar import decode
 
-class FileRenamer:
+class QRScanner:
 
-    def __init__(self, folder_path):
-        self.folder_path = folder_path
+    def scan_qr(self, image_path):
 
-    def rename_files(self, prefix):
+        image = Image.open(image_path)
 
-        files = os.listdir(self.folder_path)
+        decoded_objects = decode(image)
 
-        count = 1
+        if decoded_objects:
 
-        for file in files:
+            for obj in decoded_objects:
+                print("\nQR Code Content:")
+                print(obj.data.decode("utf-8"))
 
-            old_path = os.path.join(self.folder_path, file)
-
-            if os.path.isfile(old_path):
-
-                extension = os.path.splitext(file)[1]
-
-                new_name = f"{prefix}_{count}{extension}"
-
-                new_path = os.path.join(
-                    self.folder_path,
-                    new_name
-                )
-
-                os.rename(old_path, new_path)
-
-                count += 1
-
-        print("Files renamed successfully!")
+        else:
+            print("No QR Code found.")
 
 
 def main():
 
-    print("===== BULK FILE RENAMER =====")
+    print("===== QR CODE SCANNER =====")
 
-    folder = input("Enter folder path: ")
+    image_path = input("Enter QR image path: ")
 
-    prefix = input("Enter new file prefix: ")
-
-    renamer = FileRenamer(folder)
+    scanner = QRScanner()
 
     try:
-        renamer.rename_files(prefix)
+        scanner.scan_qr(image_path)
 
     except Exception as e:
         print("Error:", e)
