@@ -32,3 +32,48 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+import random
+import string
+
+
+class PasswordGenerator:
+
+    def __init__(self):
+        self.letters = string.ascii_letters
+        self.digits = string.digits
+        self.symbols = "!@#$%^&*()_+-=[]{}|;:,.<>?"
+
+    def generate_password(self, length):
+
+        characters = (
+            self.letters +
+            self.digits +
+            self.symbols
+        )
+
+        password = "".join(
+            random.choice(characters)
+            for _ in range(length)
+        )
+
+        return password
+
+
+def main():
+
+    print("===== PASSWORD GENERATOR =====")
+
+    length = int(input("Enter password length: "))
+
+    generator = PasswordGenerator()
+
+    password = generator.generate_password(length)
+
+    print("\nGenerated Password:")
+    print(password)
+
+
+if __name__ == "__main__":
+    main()
