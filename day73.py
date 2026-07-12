@@ -34,3 +34,33 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# day14A_missing_number.py
+
+class Solution:
+
+    def find_missing(self, arr, n):
+
+        expected_sum = n * (n + 1) // 2
+
+        actual_sum = sum(arr)
+
+        return expected_sum - actual_sum
+
+
+def main():
+
+    arr = [1, 2, 4, 5]
+
+    n = 5
+
+    solution = Solution()
+
+    result = solution.find_missing(arr, n)
+
+    print("Array:", arr)
+    print("Missing Number:", result)
+
+
+if __name__ == "__main__":
+    main()
