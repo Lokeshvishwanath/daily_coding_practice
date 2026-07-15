@@ -56,3 +56,50 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# day16_binary_search.py
+
+class Solution:
+
+    def binary_search(self, arr, target):
+
+        left = 0
+        right = len(arr) - 1
+
+        while left <= right:
+
+            mid = (left + right) // 2
+
+            if arr[mid] == target:
+                return mid
+
+            elif arr[mid] < target:
+                left = mid + 1
+
+            else:
+                right = mid - 1
+
+        return -1
+
+
+def main():
+
+    arr = [5, 10, 15, 20, 25, 30, 35]
+    target = 25
+
+    solution = Solution()
+
+    index = solution.binary_search(arr, target)
+
+    print("Array :", arr)
+    print("Target:", target)
+
+    if index != -1:
+        print("Element found at index:", index)
+    else:
+        print("Element not found")
+
+
+if __name__ == "__main__":
+    main()
