@@ -50,3 +50,37 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# day17A_move_zeroes.py
+
+class Solution:
+
+    def move_zeroes(self, arr):
+
+        left = 0
+
+        for right in range(len(arr)):
+
+            if arr[right] != 0:
+
+                arr[left], arr[right] = arr[right], arr[left]
+
+                left += 1
+
+        return arr
+
+
+def main():
+
+    arr = [0, 1, 0, 3, 12]
+
+    solution = Solution()
+
+    result = solution.move_zeroes(arr)
+
+    print("Original Array :", [0, 1, 0, 3, 12])
+    print("Modified Array :", result)
+
+
+if __name__ == "__main__":
+    main()
