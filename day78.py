@@ -35,3 +35,45 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# day18A_product_of_array_except_self
+
+class Solution:
+
+    def product_except_self(self, nums):
+
+        n = len(nums)
+
+        answer = [1] * n
+
+        prefix = 1
+
+        for i in range(n):
+
+            answer[i] = prefix
+            prefix *= nums[i]
+
+        suffix = 1
+
+        for i in range(n - 1, -1, -1):
+
+            answer[i] *= suffix
+            suffix *= nums[i]
+
+        return answer
+
+
+def main():
+
+    nums = [1, 2, 3, 4]
+
+    solution = Solution()
+
+    result = solution.product_except_self(nums)
+
+    print("Input :", nums)
+    print("Output:", result)
+
+
+if __name__ == "__main__":
+    main()
