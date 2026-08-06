@@ -46,3 +46,44 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# day28_find_peak_element.py
+
+class Solution:
+
+    def find_peak(self, nums):
+
+        left = 0
+        right = len(nums) - 1
+
+        while left < right:
+
+            mid = (left + right) // 2
+
+            if nums[mid] < nums[mid + 1]:
+
+                left = mid + 1
+
+            else:
+
+                right = mid
+
+        return left
+
+
+def main():
+
+    nums = [1, 2, 3, 1]
+
+    solution = Solution()
+
+    peak = solution.find_peak(nums)
+
+    print("Array:", nums)
+    print("Peak Index:", peak)
+    print("Peak Element:", nums[peak])
+
+
+if __name__ == "__main__":
+    main()
