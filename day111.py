@@ -43,3 +43,54 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+# day45_longest_subarray_sum_k.py
+
+class Solution:
+
+    def longest_subarray(self, nums, k):
+
+        prefix_sum = 0
+        max_length = 0
+
+        first_index = {
+            0: -1
+        }
+
+        for i in range(len(nums)):
+
+            prefix_sum += nums[i]
+
+            needed = prefix_sum - k
+
+            if needed in first_index:
+
+                length = i - first_index[needed]
+
+                max_length = max(max_length, length)
+
+            if prefix_sum not in first_index:
+
+                first_index[prefix_sum] = i
+
+        return max_length
+
+
+def main():
+
+    nums = [10, 5, 2, 7, 1, 9]
+    k = 15
+
+    solution = Solution()
+
+    result = solution.longest_subarray(nums, k)
+
+    print("Array:", nums)
+    print("K:", k)
+    print("Longest Length:", result)
+
+
+if __name__ == "__main__":
+    main()
