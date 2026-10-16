@@ -49,3 +49,56 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+# day59_palindromic_substrings.py
+
+class Solution:
+
+    def count_substrings(self, s):
+
+        count = 0
+
+        def expand(left, right):
+
+            nonlocal count
+
+            while (
+                left >= 0
+                and right < len(s)
+                and s[left] == s[right]
+            ):
+                count += 1
+
+                left -= 1
+                right += 1
+
+        for i in range(len(s)):
+
+            # Odd-length palindromes
+            expand(i, i)
+
+            # Even-length palindromes
+            expand(i, i + 1)
+
+        return count
+
+
+def main():
+
+    s = "aaa"
+
+    solution = Solution()
+    result = solution.count_substrings(s)
+
+    print("Input:", s)
+    print("Number of Palindromic Substrings:", result)
+
+
+if __name__ == "__main__":
+    main()
+
